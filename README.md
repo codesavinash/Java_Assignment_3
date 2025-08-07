@@ -1,33 +1,39 @@
 # Java_Assignment_3
 
-AvengersBattle/
-├── armour/
-│   ├── Gear.java
-│   ├── IronSuit.java         // Iron Man
-│   ├── AsgardianArmor.java   // Thor
-│   └── VibraniumSuit.java    // Black Panther
-├── stadium/
-│   ├── Arena.java
-│   ├── StarkTower.java
-│   ├── Asgard.java
-│   └── Wakanda.java
-├── utility/
-│   ├── MusicPlayer.java
-│   ├── Printer.java
-│   └── Validator.java
-├── warrior/
-│   ├── Hero.java
-│   ├── IronMan.java
-│   ├── Thor.java
-│   └── BlackPanther.java
-├── weapon/
-│   ├── Power.java
-│   ├── Repulsor.java         // Iron Man
-│   ├── Mjolnir.java          // Thor
-│   └── Claws.java            // Black Panther
-├── weather/
-│   ├── Weather.java
-│   ├── Thunderstorm.java
-│   ├── VibraniumStorm.java
-│   └── SolarFlare.java
-└── Battle.java
+warrior/
+	•	Hero.java
+	•	Thor.java
+	•	IronMan.java
+	•	BlackPanther.java
+
+weapon/
+	•	Power.java
+	•	Mjolnir.java
+	•	Repulsor.java
+	•	Claws.java
+
+armour/
+	•	Gear.java
+	•	AsgardianArmor.java
+	•	IronSuit.java
+	•	VibraniumSuit.java
+
+stadium/
+	•	Arena.java
+	•	Asgard.java
+	•	StarkTower.java
+	•	Wakanda.java
+
+weather/
+	•	Weather.java
+	•	Thunderstorm.java
+	•	SolarFlare.java
+	•	VibraniumStorm.java
+
+utility/
+	•	Printer.java
+	•	Validator.java
+	•	MusicPlayer.java
+
+Project Root
+	•	Battle.java
