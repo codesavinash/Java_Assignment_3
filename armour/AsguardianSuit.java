@@ -1,5 +1,5 @@
 package armour;
 
-public class Chainmail {
+public class AsguardianSuit {
     
 }
