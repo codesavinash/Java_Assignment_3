@@ -1,24 +1,24 @@
 # Java_Assignment_3
 
 warrior/
-	•	Hero.java
+	•	Warrior.java
 	•	Thor.java
 	•	IronMan.java
 	•	BlackPanther.java
 
 weapon/
-	•	Power.java
-	•	Mjolnir.java
+	•	Weapon.java
+	•	Hammer.java
 	•	Repulsor.java
 	•	Claws.java
 
 armour/
-	•	Gear.java
-	•	AsgardianArmor.java
+	•	Armour.java
+	•	AsgardianSuit.java
 	•	IronSuit.java
 	•	VibraniumSuit.java
 
-stadium/
+arena/
 	•	Arena.java
 	•	Asgard.java
 	•	StarkTower.java
@@ -26,9 +26,9 @@ stadium/
 
 weather/
 	•	Weather.java
-	•	Thunderstorm.java
-	•	SolarFlare.java
-	•	VibraniumStorm.java
+	•	Calm.java
+	•	Wind.java
+	•	Storm.java
 
 utility/
 	•	Printer.java
@@ -37,3 +37,6 @@ utility/
 
 Project Root
 	•	Battle.java
+ 	.	epic_battle.wav
+  	.	gameSave.txt
+   	.	README.md
