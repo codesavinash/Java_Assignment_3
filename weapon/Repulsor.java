@@ -1,18 +1,19 @@
+
 package weapon;
 
-public class Claws extends Weapon {
+public class Repulsor extends Weapon {
 
-    private int damage = 30;     // how much damage the claws can deal
-    private int dexCost = 10;    // how much dexterity the claws cost to use
-    private int hitChance = 80; // chance to hit the enemy
-
-    public Claws() {
-        super("Claws");
+    private int damage = 125;     // how much damage the Repulsor can deal
+    private int dexCost = 50;    // how much dexterity the Repulsor cost to use
+    private int hitChance = 90; // chance to hit the enemy
+    public Repulsor() {
+        super("Repulsor");
         super.setDamage(damage);
         super.setDexCost(dexCost);
-    } // Claws constructor
+    } // Repulsor constructor
 
-    // strike method implementation
+    
+     // strike method implementation
     public int strike(int attackChoice, int strength, int dexterity) {
         // Simple damage formula
         int strikeDamage = strength + getDamage() - (dexterity / 2);
@@ -31,5 +32,5 @@ public class Claws extends Weapon {
             strikeDamage = 0;
         }
         return strikeDamage;
-    } // Claws strike method
-}
+    } // Repulsor strike method
+} // Repulsor class

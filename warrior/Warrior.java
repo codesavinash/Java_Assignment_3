@@ -41,4 +41,8 @@ public abstract class Warrior {
     public void setDexterity(int dexterity) {
         this.dexterity = dexterity;
     }
+    // take damage method
+    public void reduceHealth(int damageAmount) {
+        this.health -= damageAmount;
+    }    
 } //Warrior class

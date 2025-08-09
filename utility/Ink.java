@@ -1,5 +1,6 @@
 package utility;
 
+import warrior.*;
 
 public class Ink {
 
@@ -17,6 +18,16 @@ public class Ink {
         System.out.println("////////////////////////////////////////////\n");
         
     } // goodbye method
+
+    public void printStats(String who, Warrior warrior) {
+        System.out.println("////////////////////////////////////////////");
+        System.out.printf("//// %s stats:%n", who, warrior.getType());
+        System.out.println("//// 1) Health:     " + warrior.getHealth());
+        System.out.println("//// 2) Strength:   " + warrior.getStrength());
+        System.out.println("//// 3) Dexterity:  " + warrior.getDexterity());
+        System.out.println("////////////////////////////////////////////\n");
+
+    } // try to add colors to menu later
 
     public void warriorMenu() {
         System.out.println("////////////////////////////////////////////");
