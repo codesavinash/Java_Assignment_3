@@ -1,8 +1,9 @@
 import utility.*;
 import warrior.*;
 import weapon.*;
+import armour.*;
 
-import java.util.Scanner;
+
 import java.util.Random;
 
 
@@ -10,17 +11,24 @@ import java.util.Random;
 public class Battle {
     // objects
     private static Ink ink = new Ink();
-    private static Scanner input = new Scanner(System.in);
+    private static Validator validator = new Validator();
     private static Random randNum = new Random();
     private static Warrior player;
     private static Weapon pWeapon; // Player's weapon
+    private static Armour pArmour; // Player's armour
     private static Warrior enemy;   
-    private static Weapon eWeapon; // Enemy's weapon 
+    private static Weapon eWeapon; // Enemy's weapon
+    private static Armour eArmour; // Enemy's armour
+    
 
     //variables
     private static boolean isPlayerTurn = true;
     private static boolean isGameOver = false;
     private static int damageAmount;
+    private static int maxWarriors = 3;
+    private static int maxWeapons = 3;
+    private static int maxArmours = 3;
+    private static int maxAttackOptions = 2;
 
     public static void main(String[] args) {
         ink.welcome();
@@ -28,14 +36,20 @@ public class Battle {
         //////////////////////////// Game Setup /////////////////
         // Player Warrior setup
         ink.warriorMenu();
-        int warPick = input.nextInt();
+        int warPick = validator.validatePick(maxWarriors);
         createWarrior("Player", warPick);
 
         //////////////////////////// Game Setup /////////////////
         // Player Weapon setup
         ink.weaponMenu();
-        int wepPick = input.nextInt();
+        int wepPick = validator.validatePick(maxWeapons);
         createWeapon("Player", wepPick);
+
+         //////////////////////////// Game Setup /////////////////
+        // Player Armour setup
+        ink.armourMenu();
+        int armPick = validator.validatePick(maxArmours);
+        createArmour("Player", armPick);
 
          //////////////////////////// Game Setup /////////////////
         // Enemy Warrior setup
@@ -49,10 +63,15 @@ public class Battle {
         wepPick = randNum.nextInt(3) + 1; // Randomly select enemy weapon
         createWeapon("Enemy", wepPick);
 
+        //////////////////////////// Game Setup /////////////////
+        // enemy Armour setup
+        
+        armPick = randNum.nextInt(3) + 1; // Randomly select enemy Armour
+        createArmour("Enemy", armPick);
 
-        // print all teh stats
-        ink.printStats("Player", player);
-        ink.printStats("Enemy", enemy);
+
+        
+        
 
         ///////////////////////////////////////////////////////
         // main game loop
@@ -60,7 +79,7 @@ public class Battle {
             if (isPlayerTurn) { // Player's turn logic
                 // ask attack choice
                 ink.attackMenu();
-                int attackChoice = input.nextInt();
+                int attackChoice = validator.validateAttackPick(maxAttackOptions);
 
 
                 // strike the enemy
@@ -82,15 +101,25 @@ public class Battle {
                      // else end turn
                     
                 }
-                // check if wen enemy is defeated
-                // End the game if the enemy is defeated
+                // print all teh stats
+                ink.printResults("player", damageAmount, player, enemy);
             }
             else { // Enemy's turn logic
                 // Here you would implement the enemy's attack logic
+
+
+                // print all the stats
+                ink.printResults("enemy", damageAmount, player, enemy);
+                damageAmount = 0;
+
+
+
             }isPlayerTurn = !isPlayerTurn; // Toggle turn
-             // print all teh stats
-             ink.printStats("Player", player);
-             ink.printStats("Enemy", enemy);
+             // print all the stats
+             damageAmount = 0; // Reset damage amount for next turn
+
+             
+             ink.printStats(player, pWeapon, pArmour, enemy, eWeapon, eArmour);
         } // while
 
 
@@ -156,6 +185,38 @@ public class Battle {
         } // switch
 
     } // createWeapon method
+
+    private static void createArmour(String who, int choice) {
+        switch (choice) {
+            case 1: // Asguardian Suit
+                if (who.equals("Player"))
+                    pArmour = new AsguardianSuit();
+                else
+                    eArmour = new AsguardianSuit();
+                    System.out.println("You have chosen Asguardian Suit as your armour.");
+                break;
+            case 2: // Vibranium Suit
+                if (who.equals("Player"))
+                    pArmour = new VibraniumSuit();
+                else
+                    eArmour = new VibraniumSuit();
+                    System.out.println("You have chosen Vibranium Suit as your armour.");
+                break;
+            
+            case 3: // Iron Suit
+                if (who.equals("Player"))
+                    pArmour = new IronSuit();
+                else
+                    eArmour = new IronSuit();
+                    System.out.println("You have chosen Iron Suit as your armour.");
+                break;
+            
+            default:
+                System.out.println("Invalid choice. Please select a valid weapon type.");
+                return; // Exit the method if the choice is invalid
+        } // switch
+
+    } // createArmour method
     
     
 } //Battle class
