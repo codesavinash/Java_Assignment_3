@@ -83,6 +83,8 @@ public class Battle {
 
 
                 // strike the enemy
+                System.out.println();
+                System.out.println();
                 damageAmount = pWeapon.strike(attackChoice, player.getStrength(), player.getDexterity());
                 System.out.println("You dealt " + damageAmount + " damage to the enemy!");
                 
@@ -90,10 +92,43 @@ public class Battle {
                 // apply damage
                 if (damageAmount > 0) { //hit the enemy
                     // remove health from enemy
-                    enemy.reduceHealth(damageAmount);
+                    enemy.reduceHealth(damageAmount - eArmour.getDefencePoints());
                     // check if enemy is defeated
                     if (enemy.getHealth() <= 0) {
+                        System.out.println();
                         System.out.println("You have defeated the enemy!");
+                        isGameOver = true; // end the game
+                    }
+                     // if yes you win
+                     // set isGameOver to true
+                     // else end turn
+                     
+                }
+                // print all teh stats
+                ink.printResults("player", damageAmount, player, enemy);
+                damageAmount = 0; // Reset damage amount for next turn
+            }
+            else { // Enemy's turn logic
+                // Here you would implement the enemy's attack logic
+
+
+              // ask attack choice
+                ink.attackMenu();
+                int attackChoice = randNum.nextInt(3) + 1; // 
+
+
+                // strike the enemy
+                damageAmount = eWeapon.strike(attackChoice, enemy.getStrength(), enemy.getDexterity());
+                System.out.println("You dealt " + damageAmount + " damage to the player!");
+                
+                
+                // apply damage
+                if (damageAmount > 0) { //hit the enemy
+                    // remove health from player
+                    player.reduceHealth(damageAmount - pArmour.getDefencePoints());
+                    // check if enemy is defeated
+                    if (player.getHealth() <= 0) {
+                        System.out.println("enemy wins!");
                         isGameOver = true; // end the game
                     }
                      // if yes you win
@@ -101,25 +136,16 @@ public class Battle {
                      // else end turn
                     
                 }
-                // print all teh stats
-                ink.printResults("player", damageAmount, player, enemy);
-            }
-            else { // Enemy's turn logic
-                // Here you would implement the enemy's attack logic
-
-
-                // print all the stats
-                ink.printResults("enemy", damageAmount, player, enemy);
-                damageAmount = 0;
+                // print enemy turn results
+                ink.printResults( "enemy", damageAmount, player, enemy);
+                damageAmount = 0; 
 
 
 
-            }isPlayerTurn = !isPlayerTurn; // Toggle turn
-             // print all the stats
-             damageAmount = 0; // Reset damage amount for next turn
+            }            isPlayerTurn = !isPlayerTurn; // switch turns
 
-             
-             ink.printStats(player, pWeapon, pArmour, enemy, eWeapon, eArmour);
+            isPlayerTurn = !isPlayerTurn; // switch turns
+
         } // while
 
 
