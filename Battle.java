@@ -5,6 +5,11 @@ import armour.*;
 
 
 import java.util.Random;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 
 
 
@@ -12,6 +17,8 @@ public class Battle {
     // objects
     private static Ink ink = new Ink();
     private static Validator validator = new Validator();
+    public static MusicPlayer musicPlayer = new MusicPlayer();
+
     private static Random randNum = new Random();
     private static Warrior player;
     private static Weapon pWeapon; // Player's weapon
@@ -32,6 +39,12 @@ public class Battle {
 
     public static void main(String[] args) {
         ink.welcome();
+
+        // Play background music
+        String musicFilePath = "epic.wav"; // Update with your music file path
+
+        Thread musicThread = new Thread(() -> musicPlayer.play(musicFilePath));
+        musicThread.start();
 
         //////////////////////////// Game Setup /////////////////
         // Player Warrior setup
